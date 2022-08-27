@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import androidx.annotation.StringRes
 import com.abjt.easypopupwindow.databinding.LayoutTextViewBinding
 
-class PlainTextPopupWindow(context: Context) : BasePopupWindow<LayoutTextViewBinding>(context) {
+class MaterialTextPopupWindow(private val context: Context) :
+    AbsMaterialPopupWindow<LayoutTextViewBinding>(context) {
 
     override fun initBinding(layoutInflater: LayoutInflater): LayoutTextViewBinding =
         LayoutTextViewBinding.inflate(layoutInflater)
@@ -14,12 +15,9 @@ class PlainTextPopupWindow(context: Context) : BasePopupWindow<LayoutTextViewBin
         binding.tvPopupWindow.setText(stringRes)
     }
 
-    fun setText(text: String) =apply {
+    fun setText(text: String) = apply {
         binding.tvPopupWindow.text = text
     }
 
-    fun show(builder: PlainTextPopupWindow.() -> Unit): PlainTextPopupWindow.() -> Unit {
-
-        return builder
-    }
+    fun show(builder: MaterialTextPopupWindow.() -> Unit): MaterialTextPopupWindow = apply(builder)
 }
