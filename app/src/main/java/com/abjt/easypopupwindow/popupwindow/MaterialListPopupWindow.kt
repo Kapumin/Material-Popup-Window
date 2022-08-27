@@ -20,19 +20,24 @@ class MaterialListPopupWindow<A : RecyclerView.Adapter<*>>(private val context: 
         _layoutManager = GridLayoutManager(context, 1, RecyclerView.VERTICAL, false)
     }
 
-    var adapter: A
+    val adapter: A
         get() = _adapter
-        set(value) {
-            _adapter = value
-        }
 
-    var layoutManager
+
+    val layoutManager
         get() = _layoutManager
-        set(value) {
-            _layoutManager = value
-        }
 
-    fun updateRecyclerView() {
+
+    fun setupListWindow(
+        adapter: A,
+        layoutManager: RecyclerView.LayoutManager = this.layoutManager
+    ) {
+        _adapter = adapter
+        _layoutManager = layoutManager
+        updateRecyclerView()
+    }
+
+    private fun updateRecyclerView() {
         binding.rvListPopupWindow.apply {
             adapter = _adapter
             layoutManager = _layoutManager

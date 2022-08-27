@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
     private fun showListPopupWindow(anchorView: View) =
         MaterialListPopupWindow<SimpleListAdapter>(this).show {
             showAsDropDownMenu(anchorView)
-            adapter = SimpleListAdapter()
-            updateRecyclerView()
+            setupListWindow(SimpleListAdapter())
         }
 }
